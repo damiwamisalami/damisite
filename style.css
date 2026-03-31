@@ -214,10 +214,21 @@ button:focus {
 }
 
 footer {
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid rgba(80, 38, 94, 0.22);
   padding: 1.5rem;
   text-align: center;
   color: var(--muted);
+}
+
+.footer-link {
+  color: #822a7f;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-link:hover,
+.footer-link:focus {
+  text-decoration: underline;
 }
 
 @media (min-width: 768px) {
