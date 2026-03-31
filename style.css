@@ -81,7 +81,14 @@ body {
 
 .hero-content h1 {
   font-size: clamp(2rem, 4vw, 3.25rem);
-  margin: 0 0 1rem;
+  margin: 0 0 0.35rem;
+}
+
+.hero-content .decorative {
+  color: #922c82;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.08em;
 }
 
 .hero-content p {
