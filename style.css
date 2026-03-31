@@ -1,13 +1,14 @@
 :root {
-  --bg: #fcfcfc;
+  --bg: #f1d6dc;
   --surface: #ffffff;
-  --text: #111827;
-  --muted: #6b7280;
-  --primary: #1f2937;
-  --accent: #017cff;
-  --accent-soft: #eef6ff;
-  --radius: 16px;
-  --shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
+  --text: #2f2053;
+  --muted: #5f4f8a;
+  --primary: #50265e;
+  --accent: #f091c6;
+  --accent-2: #f8d9e2;
+  --accent-soft: #fde9ef;
+  --radius: 18px;
+  --shadow: 0 10px 36px rgba(80, 38, 94, 0.16);
 }
 
 * {
@@ -27,12 +28,13 @@ body {
   top: 0;
   z-index: 10;
   backdrop-filter: blur(11px);
-  background: rgba(255, 255, 255, 0.75);
-  border-bottom: 1px solid #e5e7eb;
+  background: rgba(245, 217, 232, 0.85);
+  border-bottom: 1px solid rgba(80, 38, 94, 0.24);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.8rem 1.4rem;
+  box-shadow: 0 6px 22px rgba(80, 38, 94, 0.14);
 }
 
 .brand {
@@ -58,8 +60,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(160deg, rgba(33, 150, 243, 0.1), rgba(255, 255, 255, 1));
+  background: linear-gradient(160deg, rgba(80, 38, 94, 0.14), rgba(240, 145, 198, 0.25));
   padding: 3rem 1.5rem;
+  border-bottom: 1px solid rgba(80, 38, 94, 0.14);
 }
 
 .hero img {
@@ -96,7 +99,10 @@ button {
   padding: 0.65rem 1.2rem;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  background: linear-gradient(90deg, #f091c6, #f7a9d7);
+  color: #3e1e52;
+  box-shadow: 0 6px 18px rgba(159, 70, 137, 0.33);
 }
 
 .button {
@@ -105,9 +111,10 @@ button {
 }
 
 .button.outline {
-  border: 1px solid var(--accent);
-  color: var(--accent);
-  background: white;
+  border: 1px solid #c84a95;
+  color: #922c82;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(146, 44, 130, 0.18);
 }
 
 .button:hover,
