@@ -67,11 +67,19 @@ body {
 
 .hero img {
   width: 100%;
-  max-height: 300px;
+  max-height: 350px;
   object-fit: cover;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   margin-bottom: 1rem;
+}
+
+.image-block img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
 .hero-content {
@@ -132,6 +140,24 @@ button:focus {
   box-shadow: 0 8px 16px rgba(1, 124, 255, 0.2);
 }
 
+.button.bubble {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 1.05rem;
+  padding: 0.75rem 1.4rem;
+  background: linear-gradient(135deg, #ffd1dc, #ffb3d9, #f8d260);
+  color: #4a1f4f;
+  border: 2px solid #e29fca;
+  box-shadow: 0 8px 18px rgba(194, 64, 153, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+  text-shadow: 0 1px 0 #fff, 0 2px 0 #f8ebff, 0 3px 0 #e5b7e2;
+  border-radius: 999px;
+}
+
+.button.bubble:hover,
+.button.bubble:focus {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 10px 22px rgba(215, 72, 160, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.85);
+}
+
 .section {
   max-width: 1040px;
   margin: 0 auto;
@@ -157,12 +183,6 @@ button:focus {
 
 .grid.two-up {
   grid-template-columns: 1fr;
-}
-
-.image-block img {
-  width: 100%;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
 }
 
 .goal-block,
