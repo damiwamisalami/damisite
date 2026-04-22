@@ -203,10 +203,98 @@
       </section>
 
       <section class="section" id="projects">
-        <h2>Technical Project Samples</h2>
-        <p>
-          Project samples will be added soon. This section is intentionally blank for now.
-        </p>
+        <h2>Projects</h2>
+        
+        <article class="project">
+          <h3>Digital Clock</h3>
+          
+          <div class="project-section">
+            <h4>Overview</h4>
+            <p>
+              This project is a fully hardware-based digital clock built using CMOS logic ICs, specifically the CD4060 oscillator and CD4026 decade counters. The system displays time in HH:MM:SS using six 7-segment displays, with each digit driven directly by a counter.
+            </p>
+            <p>
+              The clock is driven by a 32.768 kHz crystal oscillator, which is divided down to 1 Hz to generate a one-second pulse. This pulse propagates through a chain of counters, incrementing seconds, minutes, and hours sequentially. The design avoids any programmable logic and instead relies entirely on discrete digital components and signal-level behavior.
+            </p>
+          </div>
+
+          <div class="project-section">
+            <h4>Motivation</h4>
+            <p>
+              I started this project with no real background in hardware or breadboarding, so the goal was to build something that would force me to understand circuits at a fundamental level. A digital clock seemed simple on the surface, but implementing it entirely with logic ICs required understanding timing, frequency division, and how signals move through a system.
+            </p>
+            <p>
+              I also wanted to get comfortable reading schematics and translating them into a working physical circuit, instead of just copying wiring layouts without understanding what each part was doing.
+            </p>
+          </div>
+
+          <div class="project-section">
+            <h4>Understanding the Circuit</h4>
+            <p>
+              Before building, I spent time studying the provided schematics and references from <a href="https://danyk.cz/index_en.html" target="_blank" rel="noopener noreferrer">Danyk's Digital Clock</a> to understand how the system works.
+            </p>
+            <img src="assets/hodiny.png" alt="Circuit schematic diagram" loading="lazy" />
+            <p>The core idea is:</p>
+            <ul>
+              <li>The CD4060 acts as both an oscillator and a frequency divider, taking a 32.768 kHz signal and stepping it down through internal flip-flops</li>
+              <li>That signal is reduced to 1 Hz, which becomes the base "tick" for the clock</li>
+              <li>Each CD4026 counter increments on that tick and directly drives a 7-segment display</li>
+              <li>Carry-out signals propagate to the next digit when a counter overflows (e.g., 9 → 0)</li>
+            </ul>
+            <p>
+              This made the design modular—each digit is just a counter, but the challenge is making them all interact correctly.
+            </p>
+          </div>
+
+          <div class="project-section">
+            <h4>Process</h4>
+            
+            <div class="process-step">
+              <h5>1. Initial Layout (Component Placement)</h5>
+              <img src="assets/1100proj1.png" alt="Initial component placement layout" loading="lazy" />
+              <p>
+                I started by placing all major components on the breadboard, including the LED displays, CD4026 and CD4060 counters, and tactile switches. The goal at this stage was to match the schematic physically so that the signal flow from left to right aligns with how time increments (hours → minutes → seconds). No wiring was done yet beyond basic alignment, since I wanted to make sure spacing and organization were correct before committing to connections. One of the main challenges here was making sure everything fit cleanly on the breadboard without overcrowding, since poor placement early on would make later wiring significantly more difficult.
+              </p>
+            </div>
+
+            <div class="process-step">
+              <h5>2. Early Wiring (Power + Basic Connections)</h5>
+              <img src="assets/1100proj2.png" alt="Power rails and initial counter connections" loading="lazy" />
+              <p>
+                Next, I wired the power rails and began connecting each counter to its corresponding display. This included adding diodes, running wires to connect the power buses, and connecting ground wires to the LED displays. I also wired power and ground to the counters and began routing the clock-related connections along the bottom row. At this stage, I focused on mapping segment outputs correctly and verifying pinouts using datasheets. To avoid large-scale issues, I tested small sections individually to confirm that each display responded correctly to its counter. A major challenge here was ensuring proper connections on the breadboard, since loose wires or incorrect pin placements would prevent segments from lighting correctly.
+              </p>
+            </div>
+
+            <div class="process-step">
+              <h5>3. Signal Propagation + Debugging</h5>
+              <img src="assets/1100proj3.png" alt="Clock signal and carry chain connections" loading="lazy" />
+              <p>
+                I added the resistors, capacitors, and the crystal oscillator to form the clock generation circuit, along with the remaining wiring needed to distribute the clock signal to the counters. I also added an electrolytic capacitor and several disk capacitors across the power bus to help reduce electrical noise and stabilize the system. Additional data lines (yellow wires) were introduced to begin linking the counters together. At this point, the system became much denser, and debugging became more difficult. Most issues were caused by small wiring mistakes or unstable connections, and since everything operates at the signal level, even a single incorrect wire could prevent the system from functioning. Troubleshooting required isolating sections of the circuit and verifying that signals were actually reaching each counter.
+              </p>
+            </div>
+
+            <div class="process-step">
+              <h5>4. Final Integration (Working Clock)</h5>
+              <img src="assets/1100proj4.png" alt="Complete functioning digital clock" loading="lazy" />
+              <p>
+                In the final stage, I completed the remaining data connections (yellow wires), added resistors and diodes used for AND gate logic, and powered the system. Once powered, the oscillator generated a steady signal that was divided down to 1 Hz and fed into the first counter, allowing the clock to increment in real time. Each counter updated its corresponding display correctly, and carry signals propagated across all six displays. I then verified the system by manually setting the time using the control buttons—cycling through minutes (00–59) and hours (00–23) to ensure correct behavior and proper rollover. This step also helped identify issues such as missing segments on the displays, which were usually caused by poor wire contact or loose connections. Fixing these required carefully reseating wires and ensuring solid electrical contact throughout the breadboard.
+              </p>
+            </div>
+          </div>
+
+          <div class="project-section">
+            <h4>Takeaways & Final Thoughts</h4>
+            <p>
+              This project made me realize how much is actually going on behind something as simple as a digital clock. At the start, I honestly struggled with just reading the schematics and understanding how everything connected. It wasn’t obvious how to go from a diagram to a real breadboard, and it took some time to get comfortable figuring out what each part was doing and how signals were supposed to flow through the system.
+            </p>
+            <p>
+              A lot of the difficulty ended up being in the physical build. Once the wiring got dense, even a small mistake—like one wire in the wrong row or a loose connection—could break an entire section of the clock. Most of my debugging came down to slowing things down, isolating parts of the circuit, and testing them one at a time before putting everything back together. A lot of the issues I ran into, like missing segments or incorrect counting, were just small wiring problems that took patience to track down.
+            </p>
+            <p>
+              By the end, I had a much better understanding of how digital systems actually work at the hardware level. I got more comfortable reading schematics, working with timing signals, and debugging in a more structured way. It also changed how I approach building things—I’m a lot more careful about verifying each step instead of trying to wire everything at once and hoping it works.
+            </p>
+          </div>
+        </article>
       </section>
 
       <section class="section" id="between-projects-contact">

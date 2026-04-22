@@ -214,6 +214,68 @@ button:focus {
   border-radius: 12px;
 }
 
+.project-section {
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid rgba(80, 38, 94, 0.12);
+}
+
+.project-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.project > h3 {
+  color: var(--primary);
+  font-size: 1.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.project-section h4 {
+  color: var(--primary);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.15rem;
+}
+
+.project-section img {
+  max-width: 50%;
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.process-step {
+  margin-bottom: 2rem;
+}
+
+.process-step img {
+  max-width: 50%;
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.process-step p {
+  margin: 0.75rem 0;
+  color: #374151;
+}
+
+.project-section ul {
+  margin: 0.75rem 0 1rem;
+  padding-left: 1.5rem;
+}
+
+.project-section li {
+  margin: 0.5rem 0;
+  color: #374151;
+}
+
 .section-header {
   display: flex;
   gap: 1rem;
